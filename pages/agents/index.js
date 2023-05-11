@@ -43,14 +43,28 @@ export default function Agents() {
 
             <li key={ agent.displayName } className='agent-item'>
 
+              <div className='agent-item-background'>
+                { agent.role.displayName.toUpperCase() }
+              </div>
               <div className='agent-item-left'>
+
                 <span className='agent-item-name'>{agent.displayName.toUpperCase()}</span>
+
+                <div className='agent-item-abilities'>
+                  <Image src={agent.abilities[3]?.displayIcon} alt={`ability`} width={'25'} height={'25'}/>
+
+                  <span>
+                    {agent.abilities[3]?.displayName.toUpperCase() }
+                  </span>
+
+                </div>
 
               </div>
               <div className='agent-item-right'>
                 <Image src={agent.fullPortrait} alt={`${agent.displayName} image`} width={'205'} height={'205'}/>
 
               </div>
+
               
             </li>
 
@@ -69,9 +83,8 @@ export default function Agents() {
           justify-content: center;
           align-items: center;
           gap: 20px;
-          list-style: none
-
-          ;
+          list-style: none;
+        ;
 
         }
         .agent-item{
@@ -82,13 +95,22 @@ export default function Agents() {
           height: 180px;
           border-radius: 30px;
           padding-left: 30px;
+          position: relative;
 
         }
 
         .agent-item-name{
           font-size: 30px;
+          line-height: 30px;
           font-family: 'VALORANT', sans-serif;
                                                 
+        }
+        .agent-item-left{
+          padding-top: 60px;
+
+        }
+        .agent-item-right, .agent-item-left{
+          z-index: 2;
         }
 
         .agent-item-right{
@@ -99,6 +121,34 @@ export default function Agents() {
         }
         .agent-item-right img{
 
+        }
+
+        .agent-item-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            z-index: ;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: .1;
+            z-index: 1;
+            user-select: none;
+            font-size: 80px;
+            overflow: hidden;
+        }
+        .agent-item-abilities{
+          color: ${ colors.red };
+          font-weight: 100;
+          display: flex;
+          flex-direction: row;
+          padding-top: 20px;
+          gap: 8px;
+        }
+        .agent-item-abilities img{
         }
 
       `}</style>
