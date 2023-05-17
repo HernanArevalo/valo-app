@@ -18,15 +18,10 @@ export default function Agents() {
     
   }
 
-
-  useLayoutEffect(() => {
+  useEffect(() => {
     getData()
-    console.log(agents)
   }, [ ])
   
-  getData()
-
-
 
   return (
     <>
@@ -41,7 +36,7 @@ export default function Agents() {
         <ul className='agents-list'>
           { agents.filter(agent => agent.isPlayableCharacter === true).map(agent => 
 
-            <li key={ agent.displayName } className='agent-item'>
+            <li key={ agent.displayName } className='agent-item grow'>
 
               <div className='agent-item-background'>
                 { agent.role.displayName.toUpperCase() }
@@ -149,6 +144,18 @@ export default function Agents() {
           gap: 8px;
         }
         .agent-item-abilities img{
+        }
+
+        .grow{
+          transition: .5s, color .10s;
+          -webkit-transition: .5s, color .10s;
+          -moz-transition: .5s, color .10s;
+        }
+        .grow:hover{
+          transform: scale3d(1.5, 1.5, 0.3);
+          -webkit-transform: scale3d(1.08, 1.08, 0.3);
+          -moz-transform: scale3d(1.08, 1.08, 0.3);
+          z-index: 999;
         }
 
       `}</style>

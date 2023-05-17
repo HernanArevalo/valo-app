@@ -17,9 +17,7 @@ export default function Home() {
       </div>
 
       <style jsx global>{`
-        *{
-          background-color: ${ colors.black };
-        }
+
       `}</style>
     </>
   )
