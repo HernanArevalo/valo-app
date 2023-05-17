@@ -59,6 +59,7 @@ export default function Agent() {
 
       <div className='agent-layout'>
 
+            <img className='valorant-logo' src='/logo-valorant.svg'/>
           <div className='agents-list'>
             <ul>
               { agents.filter(agent => agent.isPlayableCharacter === true).map( agentList => 
@@ -78,10 +79,24 @@ export default function Agent() {
           <div className='agent-section'>
           { router.isReady &&
             <>
-                <span className='agent-name'>{ agent?.displayName.toUpperCase() }</span>
+                <div className='agent-top'>
+                  <div className='agent-image-bg'>
+                    <img src={agent?.background} alt={`agent image`} className='agent-name'/>
+                  </div>
+                  <div className='agent-abilities'>
 
-                <div className='agent-item-right'>
-                    <Image src={agent?.fullPortrait} alt={`agent image`} width={'205'} height={'205'}/>
+                  </div>
+                </div>
+
+
+                <div className='agent-info'>
+                    <div className='agent-info-left'>
+                      <img className='agent-image' src={agent?.fullPortrait} alt={`agent image`}/>
+                      <h3>{agent?.displayName}</h3>
+                    </div>
+                    <div className='agent-info-rigth'>
+
+                    </div>
 
                 </div>
             </>
@@ -112,6 +127,10 @@ export default function Agent() {
             height: 90%;
             width: 1200px;
             border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
         }
         .agents-list{
             background-color: rgba(17, 20, 26, .8);
@@ -147,7 +166,6 @@ export default function Agent() {
           list-style: none;
           font-size: 50px;
           line-height: 60px;
-          cursor: pointer;
           transition: color .3s;
           user-select: none;
         }
@@ -157,14 +175,76 @@ export default function Agent() {
           text-decoration: none;
           color: #444;
           transition: .3s;
+          width: 100%;
+          cursor: pointer;
         }
-        li:hover > a{
+        a:hover{
           text-decoration: none;
           color: ${ colors.blue };
         }
 
         .agent-name{
-          
+          font-size: 80px;
+          width: 400px;
+          height: auto;
+          opacity: .8;
+        }
+        .agent-info{
+          width: 100%;
+          height: 40%;
+          position: relative;
+          background-color: white;
+          border-radius: 0px 0px 20px 20px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .agent-image{
+          position: absolute;
+          top: -450px;
+          width: 600px;
+        }
+
+        .agent-info h3{
+          color: ${ colors.black };
+          font-family: 'VALORANT', sans-serif;
+          font-size: 60px;
+        }
+
+        .agent-info-left{
+          width: 50%;
+          height: 100%;
+          display: flex;
+          align-items: end;
+          justify-content: center;
+
+        }
+
+        .agent-top{
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+        }
+
+        .agent-top > div{
+          width: 50%;
+
+        }
+        .agent-image-bg{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+        }
+
+        .agent-image-bg{
+          transform: scale(1.2);
+        }
+
+
+        .valorant-logo{
+          width: 40px;
+          height: auto;
         }
       `}</style>
     </>
