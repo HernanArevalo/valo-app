@@ -59,8 +59,17 @@ export default function Agent() {
 
       <div className='agent-layout'>
 
-            <img className='valorant-logo' src='/logo-valorant.svg'/>
           <div className='agents-list'>
+            <Link href="/agents" className='navbar-top-link' legacyBehavior>
+            <a>
+                <div className='navbar-top'>
+                    <span className='back'>BACK</span>
+                  <img className='valorant-logo' src='/logo-valorant.svg'/>
+                </div>
+
+            </a>
+
+            </Link>
             <ul>
               { agents.filter(agent => agent.isPlayableCharacter === true).map( agentList => 
                 <li key={agentList.displayName}>
@@ -75,13 +84,14 @@ export default function Agent() {
             </ul>
           </div>
 
+
           
           <div className='agent-section'>
           { router.isReady &&
             <>
                 <div className='agent-top'>
                   <div className='agent-image-bg'>
-                    <img src={agent?.background} alt={`agent image`} className='agent-name'/>
+                    <img src={agent?.background} className='agent-name-bg' alt={``}/>
                   </div>
                   <div className='agent-abilities'>
 
@@ -91,8 +101,9 @@ export default function Agent() {
 
                 <div className='agent-info'>
                     <div className='agent-info-left'>
-                      <img className='agent-image' src={agent?.fullPortrait} alt={`agent image`}/>
-                      <h3>{agent?.displayName}</h3>
+                      <img className='agent-image' src={agent?.fullPortrait} alt={``}/>
+                      <h3 className='agent-name'>{agent?.displayName}</h3>
+                      <h4 className='agent-role'>{agent?.role.displayName.toUpperCase()}</h4>
                     </div>
                     <div className='agent-info-rigth'>
 
@@ -104,7 +115,6 @@ export default function Agent() {
 
           }
           </div>
-          <h1>Asd</h1>
         
       </div>
 
@@ -138,6 +148,7 @@ export default function Agent() {
             width: 330px;
             border-radius: 20px 5px 5px 20px;
             overflow-y: scroll;
+            position: relative;
           }
 
 
@@ -156,7 +167,7 @@ export default function Agent() {
 
 
         .agents-list::-webkit-scrollbar-thumb {
-          background: #444; 
+          background: ${ colors.blue }; 
           transition: 2s;
           overflow: hidden
         }
@@ -179,15 +190,13 @@ export default function Agent() {
           cursor: pointer;
         }
         a:hover{
-          text-decoration: none;
           color: ${ colors.blue };
         }
 
-        .agent-name{
+        .agent-name-bg{
           font-size: 80px;
           width: 400px;
           height: auto;
-          opacity: .8;
         }
         .agent-info{
           width: 100%;
@@ -205,17 +214,12 @@ export default function Agent() {
           width: 600px;
         }
 
-        .agent-info h3{
-          color: ${ colors.black };
-          font-family: 'VALORANT', sans-serif;
-          font-size: 60px;
-        }
-
         .agent-info-left{
           width: 50%;
           height: 100%;
           display: flex;
-          align-items: end;
+          flex-direction: column;
+          align-items: center;
           justify-content: center;
 
         }
@@ -246,6 +250,48 @@ export default function Agent() {
           width: 40px;
           height: auto;
         }
+
+        .navbar-top{
+          background-color: ${ colors.white };
+          display: flex;
+          justify-content: center; 
+          align-items: center;
+          height: 60px;
+          position: sticky;
+          top: 0;
+          display: flex;
+          justify-content: space-between;
+          padding: 20px 20px;
+
+        }
+        .agent-name{
+          margin: 0;
+          color: ${ colors.black };
+          font-family: 'VALORANT', sans-serif;
+          font-size: 70px;
+          line-height: 60px;
+          margin-top: 40px;
+        }
+        
+        .agent-role{
+          color: grey;
+          font-family: 'Anton', sans-serif;
+          margin: 0;
+          font-size: 30px;
+          letter-spacing: 5px;
+          
+        }
+
+        .back{
+          color: ${ colors.black };
+          font-size: 25px;
+        }
+
+        .navbar-top-link:hover .back {
+          text-decoration: none;
+        }
+        
+
       `}</style>
     </>
   )

@@ -3,6 +3,7 @@
 import { colors } from '@/app/theme';
 import Head from 'next/head'
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useLayoutEffect, useState } from 'react';
 
 export default function Agents() {
@@ -35,33 +36,34 @@ export default function Agents() {
 
         <ul className='agents-list'>
           { agents.filter(agent => agent.isPlayableCharacter === true).map(agent => 
+            <Link key={ agent.displayName } href={`/agents/${agent.uuid}`} className='agent-item-link' legacyBehavior>
+            <a>
+            <li  className='agent-item grow'>
+                <div className='agent-item-background'>
+                  { agent.role.displayName.toUpperCase() }
+                </div>
+                <div className='agent-item-left'>
 
-            <li key={ agent.displayName } className='agent-item grow'>
+                  <span className='agent-item-name'>{agent.displayName.toUpperCase()}</span>
 
-              <div className='agent-item-background'>
-                { agent.role.displayName.toUpperCase() }
-              </div>
-              <div className='agent-item-left'>
+                  <div className='agent-item-abilities'>
+                    <Image src={agent.abilities[3]?.displayIcon} alt={`ability`} width={'25'} height={'25'}/>
 
-                <span className='agent-item-name'>{agent.displayName.toUpperCase()}</span>
+                    <span>
+                      {agent.abilities[3]?.displayName.toUpperCase() }
+                    </span>
 
-                <div className='agent-item-abilities'>
-                  <Image src={agent.abilities[3]?.displayIcon} alt={`ability`} width={'25'} height={'25'}/>
-
-                  <span>
-                    {agent.abilities[3]?.displayName.toUpperCase() }
-                  </span>
+                  </div>
 
                 </div>
+                <div className='agent-item-right'>
+                  <Image src={agent.fullPortrait} alt={`${agent.displayName} image`} width={'205'} height={'205'}/>
 
-              </div>
-              <div className='agent-item-right'>
-                <Image src={agent.fullPortrait} alt={`${agent.displayName} image`} width={'205'} height={'205'}/>
-
-              </div>
-
+                </div>
               
             </li>
+            </a>
+            </Link>
 
 
             )}
@@ -69,8 +71,17 @@ export default function Agents() {
       </div>
 
       <style jsx>{`
+        h1{
+          padding: 0;
+          margin: 0;
+        }
         .agents-page{
           font-family: 'Anton', sans-serif;
+          background-image: url(/agents-background.jpg);
+          background-attachment: fixed;
+          background-size: contain;
+          margin: 0;
+          padding: 0;
         }
         .agents-list{
           display: grid;
@@ -79,6 +90,8 @@ export default function Agents() {
           align-items: center;
           gap: 20px;
           list-style: none;
+          margin: 0;
+          padding: 20px
         ;
 
         }
@@ -91,13 +104,16 @@ export default function Agents() {
           border-radius: 30px;
           padding-left: 30px;
           position: relative;
+          text-decoration: none;
 
         }
+
 
         .agent-item-name{
           font-size: 30px;
           line-height: 30px;
           font-family: 'VALORANT', sans-serif;
+          color: #ffff;
                                                 
         }
         .agent-item-left{
@@ -117,8 +133,17 @@ export default function Agents() {
         .agent-item-right img{
 
         }
-
+        a{
+          text-decoration: none;
+        }
+        a:hover{
+          text-decoration: none;
+        }
+        .agent-item-link:hover .agent-item-name{
+          text-decoration: none;
+        }
         .agent-item-background {
+            color: grey;
             position: absolute;
             top: 0;
             left: 0;
@@ -157,6 +182,7 @@ export default function Agents() {
           -moz-transform: scale3d(1.08, 1.08, 0.3);
           z-index: 999;
         }
+
 
       `}</style>
     </>

@@ -3,6 +3,7 @@ export const fonts = {
 }
 
 export const colors = {
+    white: '#ffffff',
     black: '#11141A',
     grey: '#1B1E28',
     red: '#E73247',
