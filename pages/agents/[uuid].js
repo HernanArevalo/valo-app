@@ -95,7 +95,21 @@ export default function Agent() {
               </div>
 
               <div className='agent-abilities'>
+                { agent?.abilities.map((ability, idx) => 
+                  <div className='agent-ability' key={`agent-ability-${idx}`}>
+                    <div className='agent-ability-logo'>
+                      <img src={ability.displayIcon} alt={``}/>
 
+                    </div>
+                    <div className='agent-ability-name'>
+                      { ability.displayName }
+                    </div>
+                    {/* <div className='agent-ability-desc'>
+                      { ability.description }
+
+                    </div> */}
+                  </div>
+                )}
               </div>
 
               <div className='agent-info-left'>
@@ -209,6 +223,45 @@ export default function Agent() {
           width: 400px;
           height: auto;
         }
+
+        .agent-abilities{
+          background-color: #9999;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 15px;
+        }
+        .agent-ability{
+          width: 60%;
+          height: 80px;
+          display: flex;
+          flex-direction: row;
+          background-color: ${ colors.blue };
+        }
+        .agent-ability-logo{
+          height: 100%;
+          width: 80px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          box-sizing: border-box;
+          border-right: 1px solid black;
+          border-bottom: 20px solid transparent;
+          border-top: 20px solid transparent;
+
+        }
+        .agent-ability-logo img{
+          width: 65%;
+        }
+        .agent-ability-name{
+          
+        }
+        .agent-ability-desc{
+          font-size: 10px;
+        }
+
+
         .agent-info{
           position: relative;
           background-color: white;
