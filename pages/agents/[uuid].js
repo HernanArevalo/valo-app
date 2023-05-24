@@ -89,27 +89,26 @@ export default function Agent() {
           <div className='agent-section'>
           { router.isReady &&
             <>
-                <div className='agent-top'>
-                  <div className='agent-image-bg'>
-                    <img src={agent?.background} className='agent-name-bg' alt={``}/>
-                  </div>
-                  <div className='agent-abilities'>
 
-                  </div>
-                </div>
+              <div className='agent-image-bg'>
+                <img src={agent?.background} className='agent-image-bg-img' alt={``}/>
+              </div>
 
+              <div className='agent-abilities'>
 
-                <div className='agent-info'>
-                    <div className='agent-info-left'>
-                      <img className='agent-image' src={agent?.fullPortrait} alt={``}/>
-                      <h3 className='agent-name'>{agent?.displayName}</h3>
-                      <h4 className='agent-role'>{agent?.role.displayName.toUpperCase()}</h4>
-                    </div>
-                    <div className='agent-info-rigth'>
+              </div>
 
-                    </div>
+              <div className='agent-info-left'>
+                <img className='agent-image' src={agent?.fullPortrait} alt={``}/>
+                <h3 className='agent-name'>{agent?.displayName}</h3>
+                <h4 className='agent-role'>{agent?.role.displayName.toUpperCase()}</h4>
+              </div>
 
-                </div>
+              <div className='agent-bio'>
+                <span>BIOGRAPHY</span>
+                <p>{ agent?.description }</p>
+              </div>
+
             </>
 
 
@@ -124,27 +123,29 @@ export default function Agent() {
             height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-evenly;
             font-family: 'Anton', sans-serif;
             background-image: url(/agents-background.jpg);
             background-size: cover;
-            gap: 40px;
+            padding: 20px;
+            gap: 20px;
 
         }
 
         .agent-section{
             background-color: rgba(17, 20, 26, .8);
-            height: 90%;
+            height: 100%;
             width: 1200px;
             border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             overflow: hidden;
+            display: grid;
+            grid-template-columns: repeat(2, 50%);
+            grid-template-rows: 65% 35%;
+            position: relative;
         }
         .agents-list{
             background-color: rgba(17, 20, 26, .8);
-            height: 90%;
+            height: 100%;
             width: 330px;
             border-radius: 20px 5px 5px 20px;
             overflow-y: scroll;
@@ -193,37 +194,72 @@ export default function Agent() {
           color: ${ colors.blue };
         }
 
-        .agent-name-bg{
+      
+        .agent-image-bg{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+          transform: scale(1.2);
+          grid-column: 1;
+          grid-row: 1;
+        }
+        .agent-image-bg-img{
           font-size: 80px;
           width: 400px;
           height: auto;
         }
         .agent-info{
-          width: 100%;
-          height: 40%;
           position: relative;
           background-color: white;
           border-radius: 0px 0px 20px 20px;
           display: flex;
           flex-direction: row;
           justify-content: space-between;
+          grid-column: 1;
+          grid-row: 2;
         }
         .agent-image{
+          height: 200%;
           position: absolute;
-          top: -450px;
-          width: 600px;
+          bottom: 70%;
         }
 
         .agent-info-left{
-          width: 50%;
+          position: relative;
+          width: 100%;
           height: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-
+          grid-column: 1;
+          grid-row: 2;
+          background-color: ${ colors.white };
         }
 
+        .agent-bio{
+          background-color: ${ colors.white };
+          color: ${ colors.black };
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 20px 40px;
+          font-size: 20px;
+          letter-spacing: 1px;
+          font-weight: 300;
+
+        }
+        .agent-bio span{
+          color: grey;
+          font-family: 'VALORANT', sans-serif;
+          font-size: 30px;
+        }
+        .agent-bio p{
+          margin: 0;
+        }
         .agent-top{
           display: flex;
           flex-direction: row;
@@ -232,19 +268,7 @@ export default function Agent() {
 
         .agent-top > div{
           width: 50%;
-
         }
-        .agent-image-bg{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          overflow: hidden;
-        }
-
-        .agent-image-bg{
-          transform: scale(1.2);
-        }
-
 
         .valorant-logo{
           width: 40px;
@@ -290,8 +314,16 @@ export default function Agent() {
         .navbar-top-link:hover .back {
           text-decoration: none;
         }
-        
+        .agent-abilities{
+          grid-column: 2;
+          grid-row: 1;
 
+        }
+        .agent-bio{
+          grid-column: 2;
+          grid-row: 2;
+
+        }
       `}</style>
     </>
   )
