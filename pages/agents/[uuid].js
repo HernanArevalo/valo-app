@@ -95,19 +95,23 @@ export default function Agent() {
               </div>
 
               <div className='agent-abilities'>
-                { agent?.abilities.map((ability, idx) => 
-                  <div className='agent-ability' key={`agent-ability-${idx}`}>
-                    <div className='agent-ability-logo'>
-                      <img src={ability.displayIcon} alt={``}/>
 
+                { agent?.abilities.map((ability, idx) => 
+                
+                  <div className={`agent-ability ability${idx}`} key={`agent-ability-${idx}`}>
+
+                    <div className={`agent-ability-logo ${idx}`}>
+                      <img src={ability.displayIcon} alt={``}/>
                     </div>
-                    <div className='agent-ability-name'>
+
+                    <div className={`agent-ability-name ${idx}`}>
                       { ability.displayName }
                     </div>
+
                     {/* <div className='agent-ability-desc'>
                       { ability.description }
-
                     </div> */}
+                    
                   </div>
                 )}
               </div>
@@ -225,20 +229,35 @@ export default function Agent() {
         }
 
         .agent-abilities{
-          background-color: #9999;
+          gap: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+
+        .agent-ability{
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: 15px;
+          border: 1px solid ${ colors.blue };
+          {/* background-color: ${ colors.blue }; */}
         }
-        .agent-ability{
-          width: 60%;
-          height: 80px;
-          display: flex;
-          flex-direction: row;
-          background-color: ${ colors.blue };
+
+
+        .ability0, .ability1, .ability2{
+
+          
+
         }
+        
+        .ability3{
+
+        }
+
+
         .agent-ability-logo{
           height: 100%;
           width: 80px;
@@ -246,16 +265,13 @@ export default function Agent() {
           justify-content: center;
           align-items: center;
           box-sizing: border-box;
-          border-right: 1px solid black;
-          border-bottom: 20px solid transparent;
-          border-top: 20px solid transparent;
 
         }
         .agent-ability-logo img{
           width: 65%;
         }
         .agent-ability-name{
-          
+          font-family: 'VALORANT', sans-serif;
         }
         .agent-ability-desc{
           font-size: 10px;
