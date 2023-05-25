@@ -49,6 +49,7 @@ export default function Agent() {
   }, [ router.query.uuid ])
   
 
+  const [activeAbility, setActiveAbility] = useState(0)
 
 
   return (
@@ -95,25 +96,35 @@ export default function Agent() {
               </div>
 
               <div className='agent-abilities'>
-
-                { agent?.abilities.map((ability, idx) => 
                 
-                  <div className={`agent-ability ability${idx}`} key={`agent-ability-${idx}`}>
+                <div className='agent-abilities-titlte'>
+                  <span>ABILITIES</span>
+                </div>
 
-                    <div className={`agent-ability-logo ${idx}`}>
-                      <img src={ability.displayIcon} alt={``}/>
+                <div className='abilities-container'>
+                  { agent?.abilities.map((ability, idx) => 
+                  
+                    <div className={`agent-ability ability${idx} ${idx == activeAbility? 'active-ability' : ''}`} 
+                         key={`agent-ability-${idx}`}
+                         onClick={() => { setActiveAbility(idx)}}
+                         >
+
+                      <div className={`agent-ability-logo ${idx}`}>
+                        <img src={ability.displayIcon} alt={``}/>
+                      </div>
+
+                      <div className={`agent-ability-name ${idx}`}>
+                        { ability.displayName }
+                      </div>
                     </div>
+                  )}
+                </div>
 
-                    <div className={`agent-ability-name ${idx}`}>
-                      { ability.displayName }
-                    </div>
-
-                    {/* <div className='agent-ability-desc'>
-                      { ability.description }
-                    </div> */}
-                    
-                  </div>
-                )}
+                { agent?.abilities &&
+                <div className='agent-ability-desc'>
+                    { agent.abilities[activeAbility].description }
+                </div>}
+                  
               </div>
 
               <div className='agent-info-left'>
@@ -229,52 +240,75 @@ export default function Agent() {
         }
 
         .agent-abilities{
-          gap: 20px;
+          gap: 30px;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
+          padding: 30px;
         }
 
-
+        .agent-abilities-titlte{
+          font-size: 60px;
+          line-height: 80px;
+          font-family: 'VALORANT';
+          background-color: ${ colors.white };
+          color: ${ colors.black };
+          padding-top: 10px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
         .agent-ability{
           display: flex;
           flex-direction: column;
-          justify-content: center;
+          justify-content: start;
           align-items: center;
-          border: 1px solid ${ colors.blue };
-          {/* background-color: ${ colors.blue }; */}
+          width: 100px;
+          height: fit-content;
+          gap: 10px;
+          transition: .3s;
+          cursor: pointer;
+          padding-top: 5px;
+        }
+        .agent-ability:hover{
+          background-color: rgba(231, 50, 71, 0.7);
         }
 
-
-        .ability0, .ability1, .ability2{
-
-          
-
+        .active-ability{
+          background-color: rgba(231, 50, 71, 0.7);
         }
-        
-        .ability3{
-
-        }
-
-
         .agent-ability-logo{
-          height: 100%;
-          width: 80px;
           display: flex;
           justify-content: center;
           align-items: center;
-          box-sizing: border-box;
-
         }
+
         .agent-ability-logo img{
           width: 65%;
         }
         .agent-ability-name{
           font-family: 'VALORANT', sans-serif;
+          font-size: 14px;
+          cursor: pointer;
+          text-align: center;
+          
         }
+
+
         .agent-ability-desc{
-          font-size: 10px;
+          font-size: 20px;
+          text-align: center;
+          background-color: rgba(231, 50, 71, 0.3);
+          padding: 15px;
+          font-weight: 100;
+          letter-spacing: 1px;
+
+        }
+
+        .abilities-container{
+          display: flex;
+          flex-direction: row;
+          gap: 20px;
         }
 
 
