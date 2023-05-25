@@ -79,7 +79,7 @@ export default function Agents() {
           font-family: 'Anton', sans-serif;
           background-image: url(/agents-background.jpg);
           background-attachment: fixed;
-          background-size: contain;
+          background-size: cover;
           margin: 0;
           padding: 0;
         }

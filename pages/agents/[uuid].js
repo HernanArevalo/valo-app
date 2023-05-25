@@ -102,7 +102,7 @@ export default function Agent() {
                 </div>
 
                 <div className='abilities-container'>
-                  { agent?.abilities.map((ability, idx) => 
+                  { agent?.abilities.slice(0,3).map((ability, idx) => 
                   
                     <div className={`agent-ability ability${idx} ${idx == activeAbility? 'active-ability' : ''}`} 
                          key={`agent-ability-${idx}`}
