@@ -6,60 +6,50 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useLayoutEffect, useState } from 'react';
 
-export default function Agents() {
+export default function Maps() {
 
-  const [agents, setAgents] = useState( [] )
+  const [maps, setmaps] = useState( [] )
 
 
   async function getData() {
-    const response = await fetch("https://valorant-api.com/v1/agents");
+    const response = await fetch("https://valorant-api.com/v1/maps");
     const jsonData = await response.json();
 
-    setAgents(jsonData.data)
-    
+    setmaps(jsonData.data)
+    console.log(jsonData.data)
   }
 
   useEffect(() => {
     getData()
   }, [ ])
   
+  console.log(maps)
 
   return (
     <>
       <Head>
-        <title>Agents</title>
+        <title>Maps</title>
 
       </Head>
 
-      <div className='agents-page'>
-      <h1 className='page-title'>AGENTS</h1>
+      <div className='maps-page'>
+        <h1 className='page-title'>MAPS</h1>
 
-        <ul className='agents-list'>
-          { agents.filter(agent => agent.isPlayableCharacter === true).map(agent => 
-            <Link key={ agent.displayName } href={`/agents/${agent.uuid}`} className='agent-item-link' legacyBehavior>
+        <ul className='maps-list'>
+          { maps.map(map => 
+            <Link key={ map.displayName } href={`/maps/${map.uuid}`} className='map-item-link' legacyBehavior>
             <a>
-            <li  className='agent-item grow'>
-                <div className='agent-item-background'>
-                  { agent.role.displayName.toUpperCase() }
-                </div>
-                <div className='agent-item-left'>
+            <li  className='map-item grow' >
 
-                  <span className='agent-item-name'>{agent.displayName.toUpperCase()}</span>
+              <div className='map-item-left'>
+                <span className='map-item-name'>{map.displayName.toUpperCase()}</span>
+              </div>
 
-                  <div className='agent-item-abilities'>
-                    <Image src={agent.abilities[3]?.displayIcon} alt={`ability`} width={'25'} height={'25'}/>
+              <div className='map-item-background'>
+                <img src={map.splash} alt={`${map.displayName} image`} />
+              </div>
 
-                    <span>
-                      {agent.abilities[3]?.displayName.toUpperCase() }
-                    </span>
 
-                  </div>
-
-                </div>
-                <div className='agent-item-right'>
-                  <Image src={agent.fullPortrait} alt={`${agent.displayName} image`} width={'205'} height={'205'}/>
-
-                </div>
               
             </li>
             </a>
@@ -71,73 +61,78 @@ export default function Agents() {
       </div>
 
       <style jsx>{`
-      .page-title{
+        .page-title{
           padding: 0;
           margin: 0;
           font-family: 'VALORANT';
           font-size: 100px;
-          padding-top: 30px;
 
         }
-        .agents-page{
+        .maps-page{
           font-family: 'Anton', sans-serif;
           background-image: url(/agents-background.jpg);
           background-attachment: fixed;
           background-size: cover;
           margin: 0;
           padding: 0;
+          width: 100vw;
+          height: 100vh;
           display: flex;
           align-items: center;
+          justify-content: center;
           flex-direction: column;
         }
-        .agents-list{
-          display: grid;
-          grid-template-columns: repeat(3,400px);
+        .maps-list{
+          display: flex;
+          flex-wrap: wrap;
           justify-content: center;
-          align-items: center;
+          align-items: end;
           gap: 20px;
           list-style: none;
           margin: 0;
-          padding: 20px
-        ;
+          padding: 20px;
 
         }
-        .agent-item{
+        .map-item{
           background-color: ${ colors.grey };
           display: flex;
           align-items: center;
           justify-content: space-between;
           height: 180px;
+          width: 320px;
           border-radius: 30px;
           padding-left: 30px;
           position: relative;
           text-decoration: none;
+          background-attachment: fixed;
+          background-size: cover;
+          overflow: hidden;
 
         }
 
 
-        .agent-item-name{
+        .map-item-name{
           font-size: 30px;
           line-height: 30px;
           font-family: 'VALORANT', sans-serif;
           color: #ffff;
                                                 
         }
-        .agent-item-left{
+        .map-item-left{
           padding-top: 60px;
 
         }
-        .agent-item-right, .agent-item-left{
+        .map-item-right, .map-item-left{
           z-index: 2;
         }
 
-        .agent-item-right{
+        .map-item-right{
           height: 100%;
           display: flex;
           align-items: end;
           padding-bottom: 10px;
         }
-        .agent-item-right img{
+        .map-item-right img{
 
         }
         a{
@@ -146,10 +141,10 @@ export default function Agents() {
         a:hover{
           text-decoration: none;
         }
-        .agent-item-link:hover .agent-item-name{
+        .map-item-link:hover .map-item-name{
           text-decoration: none;
         }
-        .agent-item-background {
+        .map-item-background {
             color: grey;
             position: absolute;
             top: 0;
@@ -161,13 +156,13 @@ export default function Agents() {
             display: flex;
             justify-content: center;
             align-items: center;
-            opacity: .1;
+            opacity: .8;
             z-index: 1;
             user-select: none;
             font-size: 80px;
             overflow: hidden;
         }
-        .agent-item-abilities{
+        .map-item-abilities{
           color: ${ colors.red };
           font-weight: 100;
           display: flex;
@@ -175,7 +170,7 @@ export default function Agents() {
           padding-top: 20px;
           gap: 8px;
         }
-        .agent-item-abilities img{
+        .map-item-abilities img{
         }
 
         .grow{

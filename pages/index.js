@@ -12,12 +12,60 @@ export default function Home() {
         <title>Home</title>
       </Head>
 
-      <div>
-        <h3>Home</h3>
+      <div className='home-page'>
+        <h3 className='home-title'>VALORANT APP</h3>
+
+        <div className='pages'>
+          <div className='agents-page'>
+            asd
+          </div>
+          <div className='maps-page'></div>
+        </div>
+
       </div>
 
-      <style jsx global>{`
 
+
+
+      <style jsx global>{`
+        body{
+          width: 100vw;
+          height: 100vh;
+          background-image: url(/agents-background.jpg);
+          background-attachment: fixed;
+          background-size: cover;
+          display: flex;
+          justify-content: center;
+        }
+        *{
+          padding: 0;
+          margin: 0;
+        }
+        .home-title{
+          font-family: 'VALORANT', sans-serif;
+          font-size: 80px;
+        }
+        .pages{
+          display: flex;
+          flex-direction: row;
+          gap: 30px;
+        }
+        .agents-page{
+          background-image: url(/agents.jpg);
+          background-size: 120%;
+          background-position-x: center;
+          width: 300px;
+          height: 140px;
+          border: 2px solid green;
+        }
+        .maps-page{
+          background-image: url(/maps.jpg);
+          background-size: 120%;
+          background-position-x: center;
+          width: 300px;
+          height: 140px;
+          border: 2px solid green;
+        }
       `}</style>
     </>
   )
