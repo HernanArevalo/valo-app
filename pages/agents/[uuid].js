@@ -16,6 +16,7 @@ export default function Agent() {
 
 
   async function getAgentData() {
+    
     const response = await fetch(`https://valorant-api.com/v1/agents/${ router.query.uuid }`);
     const jsonData = await response.json();
 
@@ -24,7 +25,6 @@ export default function Agent() {
   }
   
   async function getAgents() {
-
 
     const response2 = await fetch("https://valorant-api.com/v1/agents");
     const jsonData2 = await response2.json();

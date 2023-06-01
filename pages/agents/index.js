@@ -78,6 +78,7 @@ export default function Agents() {
           font-size: 100px;
           padding-top: 30px;
 
+
         }
         .agents-page{
           font-family: 'Anton', sans-serif;

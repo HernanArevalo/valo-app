@@ -41,8 +41,8 @@ export default function Maps() {
             <a>
             <li  className='map-item grow' >
 
-              <div className='map-item-left'>
-                <span className='map-item-name'>{map.displayName.toUpperCase()}</span>
+              <div className='map-item-name'>
+                <span>{map.displayName.toUpperCase()}</span>
               </div>
 
               <div className='map-item-background'>
@@ -66,17 +66,19 @@ export default function Maps() {
           margin: 0;
           font-family: 'VALORANT';
           font-size: 100px;
-
+          position: absolute;
+          top: 30px;
         }
         .maps-page{
           font-family: 'Anton', sans-serif;
           background-image: url(/agents-background.jpg);
           background-attachment: fixed;
+          background-position: 50%;
           background-size: cover;
           margin: 0;
           padding: 0;
           width: 100vw;
-          height: 100vh;
+          min-height: 100vh;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -90,7 +92,8 @@ export default function Maps() {
           gap: 20px;
           list-style: none;
           margin: 0;
-          padding: 20px;
+          padding: 50px;
+          padding-top: 160px;
 
         }
         .map-item{
@@ -98,8 +101,8 @@ export default function Maps() {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          height: 180px;
-          width: 320px;
+          height: 200px;
+          width: 360px;
           border-radius: 30px;
           padding-left: 30px;
           position: relative;
@@ -110,40 +113,29 @@ export default function Maps() {
 
         }
 
-
         .map-item-name{
+          padding-top: 60px;
+          z-index: 2;
+
+        }
+
+        .map-item-name span{
           font-size: 30px;
           line-height: 30px;
           font-family: 'VALORANT', sans-serif;
           color: #ffff;
                                                 
         }
-        .map-item-left{
-          padding-top: 60px;
-
-        }
-        .map-item-right, .map-item-left{
-          z-index: 2;
+        .map-item-right, .map-item-name{
         }
 
-        .map-item-right{
-          height: 100%;
-          display: flex;
-          align-items: end;
-          padding-bottom: 10px;
-        }
-        .map-item-right img{
-
-        }
         a{
           text-decoration: none;
         }
         a:hover{
           text-decoration: none;
         }
-        .map-item-link:hover .map-item-name{
-          text-decoration: none;
-        }
+
         .map-item-background {
             color: grey;
             position: absolute;
@@ -162,16 +154,6 @@ export default function Maps() {
             font-size: 80px;
             overflow: hidden;
         }
-        .map-item-abilities{
-          color: ${ colors.red };
-          font-weight: 100;
-          display: flex;
-          flex-direction: row;
-          padding-top: 20px;
-          gap: 8px;
-        }
-        .map-item-abilities img{
-        }
 
         .grow{
           transition: .5s, color .10s;
@@ -184,7 +166,6 @@ export default function Maps() {
           -moz-transform: scale3d(1.08, 1.08, 0.3);
           z-index: 999;
         }
-
 
       `}</style>
     </>
