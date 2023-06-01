@@ -36,7 +36,7 @@ export default function Maps() {
         <h1 className='page-title'>MAPS</h1>
 
         <ul className='maps-list'>
-          { maps.map(map => 
+          { maps.filter(map => map.displayName.toUpperCase() != 'THE RANGE').map(map => 
             <Link key={ map.displayName } href={`/maps/${map.uuid}`} className='map-item-link' legacyBehavior>
             <a>
             <li  className='map-item grow' >

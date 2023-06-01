@@ -63,7 +63,7 @@ export default function Map() {
 
             </Link>
             <ul>
-              { maps.map( map => 
+              { maps.filter(map => map.displayName.toUpperCase() != 'THE RANGE').map( map => 
                 <li key={map.displayName}>
                   <Link href={`/maps/${map.uuid}`} legacyBehavior
                         className='map-link'
@@ -82,12 +82,14 @@ export default function Map() {
           { router.isReady &&
             <>
               <div className='map-info'>
-                <div className='map-title'> { map.displayName }</div>
-                  
+                <div className='map-title'> { map?.displayName }</div>
+                <div className='map-coords'> { map?.coordinates }</div>
               </div>
-              <div className='map-image'>
-                <div className='map-title'></div>
-                  
+
+              <div className='map-right'>
+                <div className='map-image'>
+                  <img src={map?.displayIcon} alt={`${map?.displayName} image`} />
+                </div>
               </div>
 
             </>
@@ -136,10 +138,54 @@ export default function Map() {
             display: flex;
             flex-direction: row;
         }
-        .map-info, .map-image{
+        .map-info, .map-right{
           width: 50%;
           height: 100%;
           padding: 20px;
+          
+        }
+
+        .map-info{
+          display: flex;
+          flex-direction: column;
+          justify-content: end;
+        }
+        .map-title{
+          font-family: 'VALORANT', sans-serif;
+          font-size: 500%;
+        }
+        .map-coords{
+          font-family: 'AuX DotBitC', sans-serif;
+          font-size: 30px;
+          word-spacing: 1%;
+          top: -40px;
+          padding: 0 10px;
+          color: ${ colors.red };
+          background-color: rgba(231, 231, 231, 0.6);
+          
+          width: fit-content;
+          height: fit-content;
+          position: relative;
+        }
+        .map-right{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 50%;
+        }
+        .map-image{
+          border-radius: 50%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .map-image img{
+          width: 100%;
+          background-color: #e7e7e7;
+          padding: 40px;
+          border-radius: 50%;
+
         }
 
         /* width */

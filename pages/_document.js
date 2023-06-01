@@ -8,6 +8,7 @@ export default function Document() {
       <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet"></link>
       <link href="https://fonts.cdnfonts.com/css/anton" rel="stylesheet"></link>
       <link href="https://fonts.cdnfonts.com/css/valorant" rel="stylesheet"></link>
+      <link href="https://fonts.cdnfonts.com/css/aux-dotbitc" rel="stylesheet"></link>
                 
                 
       </Head>
