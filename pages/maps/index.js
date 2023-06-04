@@ -16,14 +16,12 @@ export default function Maps() {
     const jsonData = await response.json();
 
     setmaps(jsonData.data)
-    console.log(jsonData.data)
   }
 
   useEffect(() => {
     getData()
   }, [ ])
   
-  console.log(maps)
 
   return (
     <>

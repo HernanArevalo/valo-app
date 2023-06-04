@@ -1,5 +1,6 @@
 import { colors } from '@/app/theme'
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home() {
 
@@ -16,10 +17,15 @@ export default function Home() {
         <h3 className='home-title'>VALORANT APP</h3>
 
         <div className='pages'>
-          <div className='agents-page'>
-            asd
-          </div>
-          <div className='maps-page'></div>
+          <Link href={`/agents`} >
+            <div className='agents-page'>
+            </div>
+          </Link>
+          <Link href={`/maps`} >
+            <div className='maps-page'>
+            </div>
+          </Link>
+
         </div>
 
       </div>

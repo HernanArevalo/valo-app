@@ -6,6 +6,20 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
+const mapsInfo = {
+  "lotus": "A mysterious structure housing an astral conduit radiates with ancient power. Great stone doors provide a variety of movement opportunities and unlock the paths to three mysterious sites.",
+  "pearl": "Attackers push down into the Defenders on this two-site map set in a vibrant, underwater city. Pearl is a geo-driven map with no mechanics. Take the fight through a compact mid or the longer range wings in our first map set in Omega Earth.",
+  "fracture": "A top secret research facility split apart by a failed radianite experiment. With defender options as divided as the map, the choice is yours: meet the attackers on their own turf or batten down the hatches to weather the assault.",
+  "breeze": "Take in the sights of historic ruins or seaside caves on this tropical paradise. But bring some cover. You'll need them for the wide open spaces and long range engagements. Watch your flanks and this will be a Breeze.",
+  "icebox": "Your next battleground is a secret Kingdom excavation site overtaken by the arctic. The two plant sites protected by snow and metal require some horizontal finesse. Take advantage of the ziplines and they’ll never see you coming.",
+  "bind": "Two sites. No middle. Gotta pick left or right. What’s it going to be then? Both offer direct paths for attackers and a pair of one-way teleporters make it easier to flank.",
+  "haven": "Beneath a forgotten monastery, a clamour emerges from rival Agents clashing to control three sites. There’s more territory to control, but defenders can use the extra real estate for aggressive pushes.",
+  "split": "If you want to go far, you’ll have to go up. A pair of sites split by an elevated center allows for rapid movement using two rope ascenders. Each site is built with a looming tower vital for control. Remember to watch above before it all blows sky-high.",
+  "ascent": "An open playground for small wars of position and attrition divide two sites on Ascent. Each site can be fortified by irreversible bomb doors; once they’re down, you’ll have to destroy them or find another way. Yield as little territory as possible.",
+}
+
+
+
 export default function Map() {
 
   const router = useRouter()
@@ -42,6 +56,8 @@ export default function Map() {
 
   }, [ router.query.uuid ])
   
+
+  console.log( mapsInfo["haven"] )
 
 
   return (
@@ -82,7 +98,8 @@ export default function Map() {
           { router.isReady &&
             <>
               <div className='map-info'>
-                <div className='map-title'> { map?.displayName }</div>
+                <div className='map-description'> { mapsInfo[ map?.displayName.toLowerCase() ] }</div>
+                <div className='map-title'> { map?.displayName }</div> 
                 <div className='map-coords'> { map?.coordinates }</div>
               </div>
 
@@ -142,13 +159,17 @@ export default function Map() {
           width: 50%;
           height: 100%;
           padding: 20px;
-          
         }
 
         .map-info{
           display: flex;
           flex-direction: column;
           justify-content: end;
+        }
+
+        .map-description{
+          font-weight: 100;
+          color: ${ colors.white };
         }
         .map-title{
           font-family: 'VALORANT', sans-serif;
@@ -160,7 +181,7 @@ export default function Map() {
           word-spacing: 1%;
           top: -40px;
           padding: 0 10px;
-          color: ${ colors.red };
+          color: ${ colors.black };
           background-color: rgba(231, 231, 231, 0.6);
           
           width: fit-content;
@@ -182,7 +203,7 @@ export default function Map() {
         }
         .map-image img{
           width: 100%;
-          background-color: #e7e7e7;
+          background-color: rgba(231, 231, 231, 0.8);
           padding: 40px;
           border-radius: 50%;
 
