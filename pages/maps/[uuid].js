@@ -98,9 +98,21 @@ export default function Map() {
           { router.isReady &&
             <>
               <div className='map-info'>
-                <div className='map-description'> { mapsInfo[ map?.displayName.toLowerCase() ] }</div>
-                <div className='map-title'> { map?.displayName }</div> 
-                <div className='map-coords'> { map?.coordinates }</div>
+
+                <div className='map-info-1'>
+                  <div className='map-description'> 
+                    { mapsInfo[ map?.displayName.toLowerCase() ] }
+                  </div>
+                </div>
+
+                <div className='map-info-2'>
+                  <div className='map-title'> 
+                    { map?.displayName }
+                  </div> 
+                  <div className='map-coords'> 
+                    { map?.coordinates }
+                  </div>
+                </div>
               </div>
 
               <div className='map-right'>
@@ -154,26 +166,51 @@ export default function Map() {
             background-position: center;
             display: flex;
             flex-direction: row;
+            align-items: end;
         }
         .map-info, .map-right{
           width: 50%;
-          height: 100%;
           padding: 20px;
         }
+        .map-right{
+          height: 100%;
 
+        }
         .map-info{
           display: flex;
           flex-direction: column;
           justify-content: end;
+          background-color: rgba(27, 30, 40, 0.85);
+          height: fit-content;
+          position: relative;
+        }
+        .map-info-1:before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            border-top: 40px solid white;
+            border-left: 40px solid transparent;
+            width: 0;
+        }
+
+        .map-info-1{
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: left;
         }
 
         .map-description{
           font-weight: 100;
           color: ${ colors.white };
+          font-family: 'g Game TC', sans-serif;
+                                                                                                
         }
         .map-title{
           font-family: 'VALORANT', sans-serif;
           font-size: 500%;
+          color: ${ colors.blue };
         }
         .map-coords{
           font-family: 'AuX DotBitC', sans-serif;
@@ -182,7 +219,7 @@ export default function Map() {
           top: -40px;
           padding: 0 10px;
           color: ${ colors.black };
-          background-color: rgba(231, 231, 231, 0.6);
+          background-color: ${ colors.white };
           
           width: fit-content;
           height: fit-content;
@@ -196,7 +233,7 @@ export default function Map() {
         }
         .map-image{
           border-radius: 50%;
-          width: 100%;
+          width: 90%;
           display: flex;
           align-items: center;
           justify-content: center;
