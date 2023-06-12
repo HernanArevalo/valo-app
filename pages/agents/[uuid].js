@@ -61,14 +61,11 @@ export default function Agent() {
       <div className='agent-layout'>
 
           <div className='agents-list'>
-            <Link href="/agents" className='navbar-top-link' legacyBehavior>
-            <a>
+            <Link href="/agents" className='navbar-top-link'>
                 <div className='navbar-top'>
                     <span className='back'>BACK</span>
                   <img className='valorant-logo' src='/logo-valorant.svg'/>
                 </div>
-
-            </a>
 
             </Link>
             <ul>

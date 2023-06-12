@@ -27,7 +27,11 @@ export default function Home() {
               <div className='page-title'>MAPS</div>
             </div>
           </Link>
-
+          <Link href={`/weapons`} className='page grow'>
+            <div className='weapons-page'>
+              <div className='page-title'>WEAPONS</div>
+            </div>
+          </Link>
         </div>
 
       </div>
@@ -54,6 +58,7 @@ export default function Home() {
           display: flex;
           flex-direction: column;
           align-items: center;
+          
 
           
         }
@@ -64,16 +69,18 @@ export default function Home() {
           margin-top: 20px;
         }
         .pages{
-          width: 1000px;
+          width: 900px;
           max-width: 90%;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           gap: 30px;
+          
         }
         .page{
           width: 100%;
+          
         }
         .grow{
           transition: .5s, color .10s;
@@ -81,29 +88,31 @@ export default function Home() {
           -moz-transition: .5s, color .10s;
         }
         .grow:hover{
-          transform: scale3d(1.5, 1.5, 0.3);
-          -webkit-transform: scale3d(1.08, 1.08, 0.3);
-          -moz-transform: scale3d(1.08, 1.08, 0.3);
+          transform: scale3d(1.2, 1.2, 0.3);
+          -webkit-transform: scale3d(1.2, 1.2, 0.3);
+          -moz-transform: scale3d(1.2, 1.2, 0.3);
           z-index: 999;
+        }
+        .agents-page, .maps-page, .weapons-page{
+          background-size: 120%;
+          background-position-x: center;
+          width: 100%;
+          height: 140px;
         }
         .agents-page{
           background-image: url(/agents.jpg);
-          background-size: 120%;
-          background-position-x: center;
-          width: 100%;
-          height: 140px;
         }
         .maps-page{
           background-image: url(/maps.jpg);
-          background-size: 120%;
-          background-position-x: center;
-          background-position-y: center;
-          width: 100%;
-          height: 140px;
+        }
+        .weapons-page{
+          background-image: url(/weapons.jpg);
         }
         .page-title{
+          backdrop-filter: grayscale(90%);
           color: white;
-          font-size: 40px;
+          font-size: 60px;
+          line-height: 50px;
           font-family: 'VALORANT', sans-serif;
           height: 100%;
           display: flex;
@@ -111,6 +120,16 @@ export default function Home() {
           padding-left: 20px;
           background: rgb(0,0,0);
           background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 60%);
+          transition: .3s;
+        }
+        .page-title:hover{
+          backdrop-filter: grayscale(0%);
+        }
+        a{
+          text-decoration: none;
+        }
+        a:hover{
+          text-decoration: none;
         }
       `}</style>
     </>

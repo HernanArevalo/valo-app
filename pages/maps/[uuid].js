@@ -69,13 +69,11 @@ export default function Map() {
       <div className='map-layout'>
           <div className='maps-list'>
             <Link href="/maps" className='navbar-top-link' legacyBehavior>
-            <a>
                 <div className='navbar-top'>
                     <span className='back'>BACK</span>
                   <img className='valorant-logo' src='/logo-valorant.svg'/>
                 </div>
 
-            </a>
 
             </Link>
             <ul>
