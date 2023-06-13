@@ -27,11 +27,11 @@ export default function Weapons() {
   return (
     <>
       <Head>
-        <title>Weapons</title>
+        <title>WEAPONS</title>
       </Head>
 
       <div className='weapons-page'>
-        <h1 className='page-title'>AGENTS</h1>
+        <h1 className='page-title'>WEAPONS</h1>
 
         <ul className='weapons-list'>
           { weapons.map(weapon => 
@@ -41,7 +41,12 @@ export default function Weapons() {
                   <img src={weapon.displayIcon} alt={`${weapon.displayName} image`}/>
 
                 </div>
-                <span className='weapon-item-name'>{weapon.displayName.toUpperCase()}</span>
+                <div className='weapon-info'>
+                  <span className='weapon-name'>{weapon.displayName.toUpperCase()}</span>
+                  <span className='weapon-type'>{weapon.shopData?.category.toUpperCase()}</span>
+
+                </div>
+
               </li>
             </Link>
           )}
@@ -84,37 +89,58 @@ export default function Weapons() {
         .weapon-item{
           width: 100%;
           background-color: ${ colors.white };
-          opacity: .7;
+          opacity: .8;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: space-between;
           height: 180px;
           border-radius: 30px;
-          padding-left: 30px;
           position: relative;
           cursor: pointer;
-          padding: 20px;
           transition: .3s;
+          overflow: hidden;
+
         }
         .weapon-item:hover{
           opacity: 1;
         }
+        .weapon-info{
+          width: 100%; 
+          height: 30%;  
+          background-color: ${ colors.grey };
+          color: ${ colors.white };
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding-top: 12px;
+          padding-left: 20px;
 
-        .weapon-item-name{
+        }
+        .weapon-name{
           font-size: 30px;
+          line-height: 25px;
           line-height: 30px;
           font-family: 'VALORANT', sans-serif;
-          color: ${ colors.black };
-          width: 100%;               
+        }
+        .weapon-type{
+          font-size: 12px;
+          position: relative;
+          bottom: 6px;
+          font-family: 'g Game TC', sans-serif;
+          font-weight: 100;
+          color: ${ colors.lioghtGrey };
+          display: flex;            
+          align-items: center;
         }
         .weapon-image{
-          height: 80%;
+          height: 70%;
           width: 100%;
           display: flex;
           align-items: center;
           justify-content: end;
-          
+          padding: 0 20px;
+
         }
         .weapon-image img{
           height: 70%;

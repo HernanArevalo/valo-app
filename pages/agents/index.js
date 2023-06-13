@@ -27,7 +27,7 @@ export default function Agents() {
   return (
     <>
       <Head>
-        <title>Agents</title>
+        <title>AGENTS</title>
 
       </Head>
 
