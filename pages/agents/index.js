@@ -37,9 +37,8 @@ export default function Agents() {
         <ul className='agents-list'>
           { agents.filter(agent => agent.isPlayableCharacter === true).map(agent => 
             <Link key={ agent.displayName } href={`/agents/${agent.uuid}`} className='agent-item-link' legacyBehavior>
-            <a>
             <li  className='agent-item grow'>
-                <div className='agent-item-background'>
+                <div className={`agent-item-background ${agent.role.displayName.toLowerCase() }`}>
                   { agent.role.displayName.toUpperCase() }
                 </div>
                 <div className='agent-item-left'>
@@ -62,7 +61,6 @@ export default function Agents() {
                 </div>
               
             </li>
-            </a>
             </Link>
 
 
@@ -99,8 +97,7 @@ export default function Agents() {
           gap: 20px;
           list-style: none;
           margin: 0;
-          padding: 20px
-        ;
+          padding: 20px;
 
         }
         .agent-item{
@@ -112,10 +109,8 @@ export default function Agents() {
           border-radius: 30px;
           padding-left: 30px;
           position: relative;
-          text-decoration: none;
-
+          cursor: pointer;
         }
-
 
         .agent-item-name{
           font-size: 30px;
@@ -144,12 +139,7 @@ export default function Agents() {
         a{
           text-decoration: none;
         }
-        a:hover{
-          text-decoration: none;
-        }
-        .agent-item-link:hover .agent-item-name{
-          text-decoration: none;
-        }
+
         .agent-item-background {
             color: grey;
             position: absolute;
@@ -167,6 +157,22 @@ export default function Agents() {
             user-select: none;
             font-size: 80px;
             overflow: hidden;
+            transition: .3s;
+        }
+        .agent-item:hover .agent-item-background{
+          opacity: .5;
+        }
+        .agent-item:hover .agent-item-background.initiator{ 
+          color: ${ colors.blue }; 
+        }
+        .agent-item:hover .agent-item-background.sentinel{ 
+          color: ${ colors.green }; 
+        }
+        .agent-item:hover .agent-item-background.controller{ 
+          color: ${ colors.yellow }; 
+        }
+        .agent-item:hover .agent-item-background.duelist{ 
+          color: ${ colors.red }; 
         }
         .agent-item-abilities{
           color: ${ colors.red };

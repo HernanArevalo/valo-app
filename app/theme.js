@@ -9,5 +9,7 @@ export const colors = {
     lightGrey: '#969696',
     red: '#E73247',
     blue: '#69C0AE',
+    green: '#418634',
+    yellow: '#aaa44b'
 }
 
