@@ -43,7 +43,7 @@ export default function Weapons() {
                 </div>
                 <div className='weapon-info'>
                   <span className='weapon-name'>{weapon.displayName.toUpperCase()}</span>
-                  <span className='weapon-type'>{weapon.shopData?.category.toUpperCase()}</span>
+                  <span className='weapon-type'>{weapon.shopData?.category.toUpperCase() || 'KNIFE'}</span>
 
                 </div>
 
@@ -129,7 +129,7 @@ export default function Weapons() {
           bottom: 6px;
           font-family: 'g Game TC', sans-serif;
           font-weight: 100;
-          color: ${ colors.lioghtGrey };
+          color: ${ colors.blue };
           display: flex;            
           align-items: center;
         }
