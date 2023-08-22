@@ -38,7 +38,6 @@ export default function Home() {
 
 
 
-
       <style jsx global>{`
         *{
           padding: 0;

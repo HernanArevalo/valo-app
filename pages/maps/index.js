@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { colors } from '@/app/theme';
+import HomeButton from '@/components/HomeButton';
 import Head from 'next/head'
 import Image from 'next/image';
 import Link from 'next/link';
@@ -57,6 +58,7 @@ export default function Maps() {
             )}
         </ul>
       </div>
+      <HomeButton />
 
       <style jsx>{`
         .page-title{

@@ -1,5 +1,6 @@
 export const fonts = {
-    base: 'Source Serif Pro, serif'
+    base: 'Source Serif Pro, serif',
+    valorant: 'VALORANT'
 }
 
 export const colors = {

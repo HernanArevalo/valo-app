@@ -1,4 +1,5 @@
 import { colors } from '@/app/theme';
+import HomeButton from '@/components/HomeButton';
 import Head from 'next/head'
 import Image from 'next/image';
 import Link from 'next/link';
@@ -53,6 +54,7 @@ export default function Weapons() {
         </ul>
 
       </div>
+      <HomeButton />
 
       <style jsx>{`
       .weapons-page{

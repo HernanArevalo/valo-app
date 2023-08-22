@@ -72,9 +72,9 @@ export default function Map() {
         <title>Weapons | { router.isReady? weapon?.displayName : '' }</title>
       </Head>
 
-      <div className='map-layout'>
-          <div className='maps-list'>
-            <Link href="/maps" className='navbar-top-link' legacyBehavior>
+      <div className='weapon-layout'>
+          <div className='weapons-list'>
+            <Link href="/weapons" className='navbar-top-link' legacyBehavior>
                 <div className='navbar-top'>
                     <span className='back'>BACK</span>
                   <img className='valorant-logo' src='/logo-valorant.svg'/>
@@ -83,12 +83,12 @@ export default function Map() {
 
             </Link>
             <ul>
-              { maps.filter(map => map.displayName.toUpperCase() != 'THE RANGE').map( map => 
-                <li key={map.displayName}>
-                  <Link href={`/maps/${map.uuid}`} legacyBehavior
-                        className='map-link'
+              { weapons.map( weaponList => 
+                <li key={weapon.displayName}>
+                  <Link href={`/weapons/${weaponList.uuid}`} legacyBehavior
+                        className='weapon-link'
                   >
-                    <a>{map.displayName.toUpperCase()}</a>
+                    <a>{weaponList.displayName.toUpperCase()}</a>
                   </Link>
                 </li>
               )}
@@ -98,32 +98,24 @@ export default function Map() {
 
 
           
-          <div className='map-section'>
+          <div className='weapon-section'>
           { router.isReady &&
             <>
-              <div className='map-info'>
 
-                <div className='map-info-1'>
-                  <div className='map-description'> 
-                    { mapsInfo[ map?.displayName.toLowerCase() ] }
+                  <div className='weapon-description'>
+                    <td>“</td>
+                    { `${weaponsInfo[ weapon?.displayName.toLowerCase() ]}` }
+                    <td>“</td>
                   </div>
-                </div>
 
-                <div className='map-info-2'>
-                  <div className='map-title'> 
-                    { map?.displayName }
-                  </div> 
-                  <div className='map-coords'> 
-                    { map?.coordinates }
+                  <div className='weapon-title'>
+                    { weapon?.displayName }
                   </div>
-                </div>
-              </div>
 
-              <div className='map-right'>
-                <div className='map-image'>
-                  <img src={map?.displayIcon} alt={`${map?.displayName} image`} />
-                </div>
-              </div>
+                  <div className='weapon-image'>
+                    <img src={weapon?.displayIcon} alt={`${weapon?.displayName} image`} />
+                  </div>
+
 
             </>
           }
@@ -132,7 +124,7 @@ export default function Map() {
       </div>
 
       <style jsx>{`
-        .map-layout{
+        .weapon-layout{
             width: 100vw;
             height: 100vh;
             display: flex;
@@ -146,7 +138,7 @@ export default function Map() {
 
         }
 
-        .maps-list{
+        .weapons-list{
             background-color: rgba(17, 20, 26, .8);
             height: 100%;
             width: 330px;
@@ -155,8 +147,8 @@ export default function Map() {
             position: relative;
           }
 
-        .map-section{
-            background-color: rgba(17, 20, 26, 1);
+        .weapon-section{
+            background-color: rgba(255, 255, 255, 0.8);
             height: 70vh;
             width: 70vw;
             border-radius: 20px;
@@ -172,81 +164,28 @@ export default function Map() {
             flex-direction: row;
             align-items: end;
         }
-        .map-info, .map-right{
-          width: 50%;
-          padding: 20px;
-        }
-        .map-right{
-          height: 100%;
 
-        }
-        .map-info{
-          display: flex;
-          flex-direction: column;
-          justify-content: end;
-          background-color: rgba(27, 30, 40, 0.85);
-          height: fit-content;
-          position: relative;
-        }
-        .map-info-1:before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            border-top: 40px solid white;
-            border-left: 40px solid transparent;
-            width: 0;
-        }
-
-        .map-info-1{
-
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          text-align: left;
-        }
-
-        .map-description{
-          font-weight: 100;
-          color: ${ colors.white };
-          font-family: 'g Game TC', sans-serif;
-                                                                                                
-        }
-        .map-title{
+        .weapon-title{
           font-family: 'VALORANT', sans-serif;
           font-size: 500%;
           color: ${ colors.blue };
         }
-        .map-coords{
-          font-family: 'AuX DotBitC', sans-serif;
-          font-size: 30px;
-          word-spacing: 1%;
-          top: -40px;
-          padding: 0 10px;
-          color: ${ colors.black };
-          background-color: ${ colors.white };
-          
-          width: fit-content;
-          height: fit-content;
-          position: relative;
+        .weapon-description{
+          font-family: 'Times New Roman';
+          color: ${ colors.red };
+          font-size: 20px;
         }
-        .map-right{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 50%;
-        }
-        .map-image{
+
+
+        .weapon-image{
           border-radius: 50%;
           width: 90%;
           display: flex;
           align-items: center;
           justify-content: center;
         }
-        .map-image img{
-          width: 100%;
-          background-color: rgba(231, 231, 231, 0.8);
-          padding: 40px;
-          border-radius: 50%;
+        .weapon-image img{
+          width: 70%;
 
         }
 
@@ -263,7 +202,7 @@ export default function Map() {
           transition: background 1s;
         }
 
-        .maps-list::-webkit-scrollbar-thumb {
+        .weapons-list::-webkit-scrollbar-thumb {
           background: ${ colors.blue }; 
           transition: 2s;
           overflow: hidden

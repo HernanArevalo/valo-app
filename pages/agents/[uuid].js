@@ -49,7 +49,7 @@ export default function Agent() {
   }, [ router.query.uuid ])
   
 
-  const [activeAbility, setActiveAbility] = useState(0)
+  const [activeAbility, setActiveAbility] = useState(2)
 
 
   return (
