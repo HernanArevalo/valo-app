@@ -77,10 +77,10 @@ export default function Weapons() {
         padding-top: 30px;
       }
       .weapons-list{
-          display: grid;
-          grid-template-columns: repeat(3,400px);
+          display: flex;
+          flex-wrap: wrap;
           justify-content: center;
-          align-items: center;
+          align-items: end;
           gap: 20px;
           list-style: none;
           margin: 0;
@@ -89,7 +89,8 @@ export default function Weapons() {
         }
 
         .weapon-item{
-          width: 100%;
+          width: 400px;
+          max-width: 80%;
           background-color: ${ colors.white };
           opacity: .8;
           display: flex;
@@ -158,6 +159,11 @@ export default function Weapons() {
           -webkit-transform: scale3d(1.08, 1.08, 0.3);
           -moz-transform: scale3d(1.08, 1.08, 0.3);
           z-index: 999;
+        }
+        @media screen and (max-width: 600px){
+          .page-title{
+            font-size: 60px;
+          }
         }
       `}</style>
     </>

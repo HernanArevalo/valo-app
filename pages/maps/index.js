@@ -110,18 +110,19 @@ export default function Maps() {
           background-attachment: fixed;
           background-size: cover;
           overflow: hidden;
-
+          position: relative;
         }
 
         .map-item-name{
           padding-top: 60px;
           z-index: 2;
-
+          position: absolute;
+          bottom: 20px;
         }
 
         .map-item-name span{
-          font-size: 30px;
-          line-height: 30px;
+          font-size: 40px;
+          line-height: 40px;
           font-family: 'VALORANT', sans-serif;
           color: #ffff;
                                                 
@@ -165,6 +166,11 @@ export default function Maps() {
           -webkit-transform: scale3d(1.08, 1.08, 0.3);
           -moz-transform: scale3d(1.08, 1.08, 0.3);
           z-index: 999;
+        }
+        @media screen and (max-width: 500px){
+          .page-title{
+            font-size: 70px;
+          }
         }
 
       `}</style>

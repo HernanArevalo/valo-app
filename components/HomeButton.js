@@ -28,6 +28,7 @@ export default function HomeButton() {
             align-items: center;
             transition: .3s;
             padding: 10px;
+            width: 60px;
         }
         .home-button-link{
             width: 100%;
@@ -45,7 +46,17 @@ export default function HomeButton() {
             background-color: rgba(255, 255, 255, 0.3);
 
         }
+      @media screen and (max-width: 500px){
+        .home-button{
+          right: 10px;
+          left: auto;
+          top: 10px;
 
+        }
+        .home-button-text{
+          display: none;
+        }
+      }
       `}</style>
     </>
   )
