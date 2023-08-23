@@ -58,8 +58,6 @@ export default function Home() {
           flex-direction: column;
           align-items: center;
           
-
-          
         }
         .home-title{
           font-family: 'VALORANT', sans-serif;
@@ -69,7 +67,7 @@ export default function Home() {
         }
         .pages{
           width: 900px;
-          max-width: 90%;
+          max-width: 80%;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -129,6 +127,38 @@ export default function Home() {
         }
         a:hover{
           text-decoration: none;
+        }
+        @media screen and (max-height: 800px){
+          .home-title{
+            font-size: 80px;
+            margin-bottom: 40px;
+          }
+        }
+        @media screen and (max-height: 800px){
+          .home-title{
+            margin-bottom: 0px;
+
+          }
+        }
+        @media screen and (max-width: 500px){
+          .home-title{
+            font-size: 60px;
+          }
+          .pages{
+            max-width: 80%;
+            border-radius: 10px;
+          }
+          .grow:hover{
+            transform: scale3d(1.1, 1.1, 0.3);
+            -webkit-transform: scale3d(1.1, 1.1, 0.3);
+            -moz-transform: scale3d(1.1, 1.1, 0.3);
+            z-index: 999;
+          }
+        }
+        @media screen and (max-width: 460px){
+          .page-title{
+            font-size: 45px;
+          }
         }
       `}</style>
     </>

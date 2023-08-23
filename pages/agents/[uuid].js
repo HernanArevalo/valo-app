@@ -64,7 +64,7 @@ export default function Agent() {
             <Link href="/agents" className='navbar-top-link'>
                 <div className='navbar-top'>
                     <span className='back'>BACK</span>
-                  <img className='valorant-logo' src='/logo-valorant.svg'/>
+                  <Image className='valorant-logo' src='/logo-valorant.svg' alt='valorant-logo' />
                 </div>
 
             </Link>
@@ -89,7 +89,7 @@ export default function Agent() {
             <>
 
               <div className='agent-image-bg'>
-                <img src={agent?.background} className='agent-image-bg-img' alt={``}/>
+                <Image src={agent?.background} className='agent-image-bg-img' alt={``} />
               </div>
 
               <div className='agent-abilities'>
@@ -107,7 +107,7 @@ export default function Agent() {
                          >
 
                       <div className={`agent-ability-logo ${idx}`}>
-                        <img src={ability.displayIcon} alt={``}/>
+                        <Image src={ability.displayIcon} alt={``} />
                       </div>
 
                       <div className={`agent-ability-name ${idx}`}>
@@ -125,7 +125,7 @@ export default function Agent() {
               </div>
 
               <div className='agent-info-left'>
-                <img className='agent-image' src={agent?.fullPortrait} alt={``}/>
+                <Image className='agent-image' src={agent?.fullPortrait} alt={``} />
                 <h3 className='agent-name'>{agent?.displayName}</h3>
                 <h4 className='agent-role'>{agent?.role.displayName.toUpperCase()}</h4>
               </div>

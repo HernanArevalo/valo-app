@@ -199,8 +199,16 @@ export default function Agents() {
           -moz-transform: scale3d(1.08, 1.08, 0.3);
           z-index: 999;
         }
-
-
+        @media screen and (max-width: 1300px){
+          .agents-list{
+            grid-template-columns: repeat(2,400px);
+          }
+        }
+        @media screen and (max-width: 900px){
+          .agents-list{
+            grid-template-columns: repeat(1,400px);
+          }
+        }
       `}</style>
     </>
   )
