@@ -1,7 +1,7 @@
 import { colors } from '@/app/theme';
 import HomeButton from '@/components/HomeButton';
+import { SoonMessage } from '@/components/SoonMessage';
 import Head from 'next/head'
-import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -36,8 +36,8 @@ export default function Weapons() {
 
         <ul className='weapons-list'>
           { weapons.map(weapon => 
-            <Link key={ weapon.displayName } href={`/weapons/${weapon.uuid}`} className='weapon-item-link' legacyBehavior>
-              <li  className='weapon-item grow'>
+            // <Link key={ weapon.displayName } href={`/weapons/`} className='weapon-item-link' legacyBehavior >
+              <li  className='weapon-item grow' key={ weapon.displayName } onClick={ SoonMessage }>
                 <div className='weapon-image'>
                   <img src={weapon.displayIcon} alt={`${weapon.displayName} image`}/>
 
@@ -49,7 +49,7 @@ export default function Weapons() {
                 </div>
 
               </li>
-            </Link>
+            // </Link>
           )}
         </ul>
 
@@ -143,6 +143,10 @@ export default function Weapons() {
           align-items: center;
           justify-content: end;
           padding: 0 20px;
+          background-color: #eef3f2;
+          opacity: 1;
+          background-image: linear-gradient(45deg, #ffffff 50%, #eef3f2 50%);
+          background-size: 40px 40px;
 
         }
         .weapon-image img{

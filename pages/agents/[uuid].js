@@ -61,20 +61,20 @@ export default function Agent() {
       <div className='agent-layout'>
 
           <div className='agents-list'>
-            <Link href="/agents" className='navbar-top-link'>
+
+            <Link href="/agents" className='navbar-top-link' legacyBehavior>
                 <div className='navbar-top'>
                     <span className='back'>BACK</span>
-                  <Image className='valorant-logo' src='/logo-valorant.svg' alt='valorant-logo' />
+                  <img className='valorant-logo' src='/logo-valorant.svg' alt='valorant-logo' />
                 </div>
-
             </Link>
             <ul>
               { agents.filter(agent => agent.isPlayableCharacter === true).map( agentList => 
                 <li key={agentList.displayName}>
-                  <Link href={`/agents/${agentList.uuid}`} legacyBehavior
-                        className='agent-link'
-                  >
-                    <a>{agentList.displayName.toUpperCase()}</a>
+                  <Link href={`/agents/${agentList.uuid}`} legacyBehavior>
+                    <a  className={`agent-link ${agentList.role.displayName.toLowerCase() }`}>
+                      {agentList.displayName.toUpperCase()}
+                    </a>
                   </Link>
                 </li>
               )}
@@ -89,7 +89,7 @@ export default function Agent() {
             <>
 
               <div className='agent-image-bg'>
-                <Image src={agent?.background} className='agent-image-bg-img' alt={``} />
+                <img src={agent?.background} className='agent-image-bg-img' alt={``} />
               </div>
 
               <div className='agent-abilities'>
@@ -107,7 +107,7 @@ export default function Agent() {
                          >
 
                       <div className={`agent-ability-logo ${idx}`}>
-                        <Image src={ability.displayIcon} alt={``} />
+                        <img src={ability.displayIcon} alt={``} />
                       </div>
 
                       <div className={`agent-ability-name ${idx}`}>
@@ -125,7 +125,7 @@ export default function Agent() {
               </div>
 
               <div className='agent-info-left'>
-                <Image className='agent-image' src={agent?.fullPortrait} alt={``} />
+                <img className='agent-image' src={agent?.fullPortrait} alt={``} />
                 <h3 className='agent-name'>{agent?.displayName}</h3>
                 <h4 className='agent-role'>{agent?.role.displayName.toUpperCase()}</h4>
               </div>
@@ -168,6 +168,7 @@ export default function Agent() {
             grid-template-columns: repeat(2, 50%);
             grid-template-rows: 65% 35%;
             position: relative;
+            box-shadow: 5px 5px 20px black;
         }
         .agents-list{
             background-color: rgba(17, 20, 26, .8);
@@ -216,9 +217,19 @@ export default function Agent() {
           width: 100%;
           cursor: pointer;
         }
-        a:hover{
-          color: ${ colors.blue };
-        }
+
+      .agent-link.initiator:hover{ 
+        color: ${ colors.blue }; 
+      }
+      .agent-link.sentinel:hover{ 
+        color: ${ colors.green }; 
+      }
+      .agent-link.controller:hover{ 
+        color: ${ colors.yellow }; 
+      }
+      .agent-link.duelist:hover{ 
+        color: ${ colors.red }; 
+      }
 
       
         .agent-image-bg{
@@ -321,13 +332,14 @@ export default function Agent() {
         }
         .agent-image{
           height: 200%;
+          width: auto;
           position: absolute;
           bottom: 70%;
         }
 
         .agent-info-left{
           position: relative;
-          width: 100%;
+          width: auto;
           height: 100%;
           display: flex;
           flex-direction: column;
@@ -377,6 +389,7 @@ export default function Agent() {
 
         .navbar-top{
           background-color: ${ colors.white };
+          cursor: pointer;
           display: flex;
           justify-content: center; 
           align-items: center;

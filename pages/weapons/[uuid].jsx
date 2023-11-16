@@ -84,7 +84,7 @@ export default function Map() {
             </Link>
             <ul>
               { weapons.map( weaponList => 
-                <li key={weapon.displayName}>
+                <li key={weapon?.displayName}>
                   <Link href={`/weapons/${weaponList.uuid}`} legacyBehavior
                         className='weapon-link'
                   >
@@ -234,6 +234,7 @@ export default function Map() {
 
         .navbar-top{
           background-color: ${ colors.white };
+          cursor: pointer;
           display: flex;
           justify-content: center; 
           align-items: center;

@@ -67,14 +67,14 @@ export default function Map() {
       </Head>
 
       <div className='map-layout'>
+
           <div className='maps-list'>
+
             <Link href="/maps" className='navbar-top-link' legacyBehavior>
                 <div className='navbar-top'>
                     <span className='back'>BACK</span>
                   <img className='valorant-logo' src='/logo-valorant.svg'/>
                 </div>
-
-
             </Link>
             <ul>
               { maps.filter(map => map.displayName.toUpperCase() != 'THE RANGE').map( map => 
@@ -165,6 +165,8 @@ export default function Map() {
             display: flex;
             flex-direction: row;
             align-items: end;
+            box-shadow: 5px 5px 20px black;
+
         }
         .map-info, .map-right{
           width: 50%;
@@ -289,6 +291,7 @@ export default function Map() {
 
         .navbar-top{
           background-color: ${ colors.white };
+          cursor: pointer;
           display: flex;
           justify-content: center; 
           align-items: center;
