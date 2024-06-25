@@ -1,49 +1,42 @@
-import { colors } from '@/app/theme'
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from 'next/head';
+import Link from 'next/link';
+import 'animate.css';
 
 export default function Home() {
-
-
-
-
   return (
     <>
       <Head>
         <title>Valo Wiki | Home</title>
       </Head>
 
-      <div className='home-page'>
-        <h3 className='home-title'>VALO WIKI </h3>
+      <div className="home-page animate__animated animate__fadeIn">
+        <h3 className="home-title">VALO WIKI </h3>
 
-        <div className='pages'>
-          <Link href={`/agents`} className='page grow'>
-            <div className='agents-page'>
-              <div className='page-title'>AGENTS</div>
+        <div className="pages animate__animated animate__fadeIn animate__delay-.5s">
+          <Link href={`/agents`} className="page grow">
+            <div className="agents-page">
+              <div className="page-title">AGENTS</div>
             </div>
           </Link>
-          <Link href={`/maps`} className='page grow'>
-            <div className='maps-page'>
-              <div className='page-title'>MAPS</div>
+          <Link href={`/maps`} className="page grow">
+            <div className="maps-page">
+              <div className="page-title">MAPS</div>
             </div>
           </Link>
-          <Link href={`/weapons`} className='page grow'>
-            <div className='weapons-page'>
-              <div className='page-title'>WEAPONS</div>
+          <Link href={`/weapons`} className="page grow">
+            <div className="weapons-page">
+              <div className="page-title">WEAPONS</div>
             </div>
           </Link>
         </div>
-
       </div>
 
-
-
       <style jsx global>{`
-        *{
+        * {
           padding: 0;
           margin: 0;
         }
-        body{
+        body {
           width: 100vw;
           height: 100vh;
           background-image: url(/agents-background.jpg);
@@ -51,21 +44,20 @@ export default function Home() {
           background-attachment: fixed;
           background-size: cover;
         }
-        .home-page{
+        .home-page {
           width: 100vw;
           height: 100vh;
           display: flex;
           flex-direction: column;
           align-items: center;
-          
         }
-        .home-title{
+        .home-title {
           font-family: 'VALORANT', sans-serif;
           font-size: 80px;
           margin-bottom: 80px;
           margin-top: 20px;
         }
-        .pages{
+        .pages {
           width: 900px;
           max-width: 80%;
           display: flex;
@@ -73,39 +65,39 @@ export default function Home() {
           align-items: center;
           justify-content: center;
           gap: 30px;
-          
         }
-        .page{
+        .page {
           width: 100%;
-          
         }
-        .grow{
-          transition: .5s, color .10s;
-          -webkit-transition: .5s, color .10s;
-          -moz-transition: .5s, color .10s;
+        .grow {
+          transition: 0.5s, color 0.1s;
+          -webkit-transition: 0.5s, color 0.1s;
+          -moz-transition: 0.5s, color 0.1s;
         }
-        .grow:hover{
+        .grow:hover {
           transform: scale3d(1.2, 1.2, 0.3);
           -webkit-transform: scale3d(1.2, 1.2, 0.3);
           -moz-transform: scale3d(1.2, 1.2, 0.3);
           z-index: 999;
         }
-        .agents-page, .maps-page, .weapons-page{
+        .agents-page,
+        .maps-page,
+        .weapons-page {
           background-size: 120%;
           background-position-x: center;
           width: 100%;
           height: 140px;
         }
-        .agents-page{
+        .agents-page {
           background-image: url(/agents.jpg);
         }
-        .maps-page{
+        .maps-page {
           background-image: url(/maps.jpg);
         }
-        .weapons-page{
+        .weapons-page {
           background-image: url(/weapons.jpg);
         }
-        .page-title{
+        .page-title {
           backdrop-filter: grayscale(90%);
           color: white;
           font-size: 60px;
@@ -115,52 +107,55 @@ export default function Home() {
           display: flex;
           align-items: end;
           padding-left: 20px;
-          background: rgb(0,0,0);
-          background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 60%);
-          transition: .3s;
+          background: rgb(0, 0, 0);
+          background: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 0) 60%
+          );
+          transition: 0.3s;
         }
-        .page-title:hover{
+        .page-title:hover {
           backdrop-filter: grayscale(0%);
         }
-        a{
+        a {
           text-decoration: none;
         }
-        a:hover{
+        a:hover {
           text-decoration: none;
         }
-        @media screen and (max-height: 800px){
-          .home-title{
+        @media screen and (max-height: 800px) {
+          .home-title {
             font-size: 80px;
             margin-bottom: 40px;
           }
         }
-        @media screen and (max-height: 800px){
-          .home-title{
+        @media screen and (max-height: 800px) {
+          .home-title {
             margin-bottom: 0px;
-
           }
         }
-        @media screen and (max-width: 500px){
-          .home-title{
+        @media screen and (max-width: 500px) {
+          .home-title {
             font-size: 60px;
           }
-          .pages{
+          .pages {
             max-width: 80%;
             border-radius: 10px;
           }
-          .grow:hover{
+          .grow:hover {
             transform: scale3d(1.1, 1.1, 0.3);
             -webkit-transform: scale3d(1.1, 1.1, 0.3);
             -moz-transform: scale3d(1.1, 1.1, 0.3);
             z-index: 999;
           }
         }
-        @media screen and (max-width: 460px){
-          .page-title{
+        @media screen and (max-width: 460px) {
+          .page-title {
             font-size: 45px;
           }
         }
       `}</style>
     </>
-  )
+  );
 }
